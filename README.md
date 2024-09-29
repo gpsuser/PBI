@@ -1,6 +1,6 @@
 # PBI
 
-# Notes
+## Notes
 
 Discuss PBI licensing
 Filtering for row level security 

@@ -164,11 +164,11 @@ FORECASTING - third party widgets
 Q&A
 AI - Key Influences
 
-
-PART 2 - INTERMEDIATE
+## PART 2 - INTERMEDIATE
 
 
 Prompt:
+
 Please generate the dax code that will allow me to group by
 Dim_Customer[Customer] and Dim_Product[Product] and then 
 calculate the sum of Fact_Sales[Total Spend] ,
@@ -220,24 +220,27 @@ Answer - correct
       GroupedSales  ORDER BY Dim_Customer[Customer] ASC, Dim_Product[Product] ASC
   ```
 
-Group BY - using variables
+Group BY - using variables and NO SORTING 
 
-```daxtbl_GroupByTest = 
-VAR FilteredSales = 
-    FILTER(
-        ADDCOLUMNS(
-            Fact_Sales,
-            "Population Size", RELATED(Dim_City[Population Size])
-        ),
-        [Population Size] > 200000
-    )
+* once in table form you can sort - cant impose sort before
+
+```dax
+
+tbl_GroupByTest = VAR FilteredSales = 
+    FILTER(
+        ADDCOLUMNS(
+            Fact_Sales,
+            "Population Size", RELATED(Dim_City[Population Size])
+        ),
+        [Population Size] > 200000
+    )
 VAR GroupedSales = 
-    SUMMARIZE(
-        FilteredSales,
-        Dim_Customer[Customer],
-        Dim_Product[Product],
-        "Total Spend", SUM(Fact_Sales[Total Spend])
-    )
+    SUMMARIZE(
+        FilteredSales,
+        Dim_Customer[Customer],
+        Dim_Product[Product],
+        "Total Spend", SUM(Fact_Sales[Total Spend])
+    )
 RETURN
-    GroupedSales  
+	GroupedSales  
 ```

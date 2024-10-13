@@ -98,11 +98,12 @@ Copy and paste the below into `Enter Data` and then click `Load`
 ```csv   ProductWeight
 
 Product	    Weight grams
-Product A   115
-Product B   220
-Product C   3000
-Product D   410
-Product E   525
+Product A	115
+Product B	220
+Product C	3000
+Product D	410
+Product E	525
+
 ```
 
 Fix the column header issue:

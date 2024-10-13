@@ -103,6 +103,7 @@ Product B   220
 Product C   3000
 Product D   410
 Product E   525
+```
 
 Fix the column header issue:
 

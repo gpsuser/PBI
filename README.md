@@ -74,6 +74,8 @@ Modelling > New Table > DistinctCountries = DISTINCT(financials_new[Country])
 Home  > Enter Data
 ```
 
+#### Shopping Country Data
+
 Copy and paste the below into `Enter Data` and then click `Load`
 
 ```csv   ShoppingCountry
@@ -88,6 +90,23 @@ Product F	United States of America
 Product G	United States of America
 Product H	United States of America
 ```
+
+#### Product Weight Data
+
+Copy and paste the below into `Enter Data` and then click `Load`
+
+```csv   ProductWeight
+
+Product	    Weight grams
+Product A   115
+Product B   220
+Product C   3000
+Product D   410
+Product E   525
+
+Fix the column header issue:
+
+
 
 ### Keys and relationships
 

@@ -1,15 +1,6 @@
 # PBI
 
 
-## Notes
-
-Discuss PBI licensing
-Filtering for row level security 
-
-## Section 2
-
-* Download the .txt file an import into PBI
-
 ### SQL
 
 Show connection between SQL server and Power BI
@@ -72,23 +63,6 @@ Modelling > New Table > DistinctCountries = DISTINCT(financials_new[Country])
 
 ```instructions
 Home  > Enter Data
-```
-
-#### Shopping Country Data
-
-Copy and paste the below into `Enter Data` and then click `Load`
-
-```csv   ShoppingCountry
-
-Product	Country
-Product A	Mexico
-Product B	France
-Product C	Germany
-Product D	Canada
-Product E	Canada
-Product F	United States of America
-Product G	United States of America
-Product H	United States of America
 ```
 
 #### Product Weight Data

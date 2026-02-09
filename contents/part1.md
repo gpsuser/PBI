@@ -57,18 +57,39 @@ Product E	525
 ```
 
 
-### create new aggregate table - use groupby to calculate total weight by product
+### Using DAX Studio to "test" aggregation - use groupby to calculate total weight by city and product
 
 ```dax
-CityProductWeights = 
+EVALUATE
 SUMMARIZE(
     'sales_data',
     'sales_data'[City],
-    'sales_data'[Product],
     "Total Weight", 
     SUMX(
         'sales_data',
         RELATED('weight'[Weight_grams])
     )
 )
+ORDER BY [Total Weight] DESC
 ```
+
+### Consider sorting in DAX 
+
+Example 1:
+
+```dax
+EVALUATE
+SUMMARIZE(
+    'sales_data',
+    'sales_data'[City],
+    "Total Weight", 
+    SUMX(
+        'sales_data',
+        RELATED('weight'[Weight_grams])
+    )
+)
+ORDER BY [Total Weight] DESC
+
+```
+
+

@@ -32,278 +32,286 @@ Welcome to this hands-on Power BI DAX worksheet! This exercise set will help you
 
 ---
 
-## Exercise 1: Basic Calculated Columns
+## Exercise 1: Basic Calculated Columns - Arithmetic & Text Operations
 
-**Objective**: Learn to create calculated columns using basic arithmetic operations.
+**Objective**: Learn to create calculated columns using arithmetic operations and text manipulation.
 
-### Task 1.1: Create a Unit Price Column
-Calculate the unit price for each transaction by dividing Total Spend by Items.
+### Task 1.1: Calculate Revenue per Item
+Calculate how much revenue each individual item generates in a transaction.
 
-**Column Name**: `Unit_Price`
+**Column Name**: `Revenue_Per_Item`
 
 **Your DAX Code**:
 ```dax
-Unit_Price = 
+Revenue_Per_Item = 
 
 
 ```
 
-**Expected Result**: A new column showing the price per item for each sale.
+**Expected Result**: A column showing Total Spend divided by the number of items (e.g., a $1000 sale with 10 items = $100 per item).
 
 ---
 
-### Task 1.2: Create a Date Column in YYYYMMDD Format
-Convert the Date Time column to a numeric date format (e.g., 01/02/2023 becomes 20230201).
+### Task 1.2: Create Product-City Combination
+Create a text column that combines the Product and City into a single descriptor (e.g., "Product A - City 1").
 
-**Column Name**: `Date_Key`
+**Column Name**: `Product_City_Label`
 
 **Your DAX Code**:
 ```dax
-Date_Key = 
+Product_City_Label = 
 
 
 ```
 
-**Expected Result**: A column with dates as integers (e.g., 20230201, 20230318).
+**Expected Result**: Text values like "Product A - City 1", "Product B - City 3", etc.
 
 ---
 
-## Exercise 2: Text and Date Functions
+## Exercise 2: Date & Time Extraction
 
-**Objective**: Work with date functions and text formatting.
+**Objective**: Extract different components from date/time values.
 
-### Task 2.1: Extract Month Name
-Create a column that shows the month name from the Date Time column.
+### Task 2.1: Extract Quarter
+Create a column that shows which quarter of the year the sale occurred in (Q1, Q2, Q3, Q4).
 
-**Column Name**: `Month_Name`
+**Column Name**: `Quarter`
 
 **Your DAX Code**:
 ```dax
-Month_Name = 
+Quarter = 
 
 
 ```
 
-**Expected Result**: Month names like "January", "February", "March", etc.
+**Expected Result**: Values like "Q1", "Q2", "Q3", "Q4".
 
 ---
 
-### Task 2.2: Extract Year
-Create a column that extracts just the year from the Date Time column.
+### Task 2.2: Extract Day of Week Name
+Create a column showing the day of the week as text (Monday, Tuesday, etc.).
 
-**Column Name**: `Year`
+**Column Name**: `Day_of_Week`
 
 **Your DAX Code**:
 ```dax
-Year = 
+Day_of_Week = 
 
 
 ```
 
-**Expected Result**: Years like 2023.
+**Expected Result**: Day names like "Monday", "Tuesday", "Wednesday", etc.
 
 ---
 
-## Exercise 3: Conditional Logic
+## Exercise 3: Conditional Logic & Categorization
 
-**Objective**: Use conditional functions to categorize data.
+**Objective**: Use conditional functions to create business categories.
 
-### Task 3.1: Create Revenue Tier Column
-Categorize each sale as:
-- "Low" if Total Spend < $2,000
-- "Medium" if Total Spend between $2,000 and $6,000
-- "High" if Total Spend > $6,000
+### Task 3.1: Create Volume Tier Column
+Categorize transactions based on the number of items sold:
+- "Small Order" if Items < 10
+- "Medium Order" if Items between 10 and 20
+- "Large Order" if Items > 20
 
-**Column Name**: `Revenue_Tier`
+**Column Name**: `Order_Size`
 
 **Your DAX Code**:
 ```dax
-Revenue_Tier = 
+Order_Size = 
 
 
 ```
 
-**Expected Result**: Each sale categorized as Low, Medium, or High.
+**Expected Result**: Each sale categorized as Small Order, Medium Order, or Large Order.
 
 ---
 
-### Task 3.2: Create Weekend Flag
-Create a column that shows "Weekend" if the sale occurred on Saturday or Sunday, otherwise "Weekday".
+### Task 3.2: Create Time of Day Category
+Categorize transactions by the time they occurred:
+- "Morning" for hours 6-11
+- "Afternoon" for hours 12-17
+- "Evening" for hours 18-23
+- "Night" for hours 0-5
 
-**Column Name**: `Day_Type`
+**Column Name**: `Time_of_Day`
 
 **Your DAX Code**:
 ```dax
-Day_Type = 
+Time_of_Day = 
 
 
 ```
 
-**Expected Result**: "Weekend" or "Weekday" for each transaction.
+**Expected Result**: Categories like "Morning", "Afternoon", "Evening", "Night".
 
 ---
 
-## Exercise 4: Aggregation with Related Tables
+## Exercise 4: Working with Related Tables
 
-**Objective**: Use the RELATED function to bring data from another table.
+**Objective**: Use RELATED function and perform calculations with data from multiple tables.
 
-### Task 4.1: Add Weight to Sales Data
-Create a calculated column that brings the weight value from the weight table.
+### Task 4.1: Calculate Weight per Item
+Calculate the weight of a single item by getting the product weight from the weight table.
 
-**Column Name**: `Product_Weight`
+**Column Name**: `Weight_Per_Unit`
 
 **Your DAX Code**:
 ```dax
-Product_Weight = 
+Weight_Per_Unit = 
 
 
 ```
 
-**Expected Result**: Weight in grams for each product in the sales data.
+**Expected Result**: The weight in grams for one unit of each product.
+
+**Hint**: This should return the same value as the weight table for each product.
 
 ---
 
-### Task 4.2: Calculate Total Weight per Transaction
-Calculate the total weight for each transaction by multiplying Product Weight by Items sold.
+### Task 4.2: Determine if Product is Heavy
+Create a flag that marks products as "Heavy" if they weigh more than 500 grams, otherwise "Light".
 
-**Column Name**: `Total_Weight_Grams`
+**Column Name**: `Product_Weight_Category`
 
 **Your DAX Code**:
 ```dax
-Total_Weight_Grams = 
+Product_Weight_Category = 
 
 
 ```
 
-**Expected Result**: Total weight in grams for each sale.
+**Expected Result**: "Heavy" for Products C, D, E; "Light" for Products A, B.
 
 ---
 
-## Exercise 5: Measures (Basic Aggregations)
+## Exercise 5: Measures for Business Intelligence
 
-**Objective**: Create measures that aggregate data across the entire dataset or filtered context.
+**Objective**: Create measures for dynamic aggregations and KPIs.
 
-### Task 5.1: Total Revenue Measure
-Create a measure that calculates the total revenue across all sales.
+### Task 5.1: Maximum Single Transaction
+Create a measure that finds the highest transaction value.
 
-**Measure Name**: `Total_Revenue`
+**Measure Name**: `Max_Transaction_Value`
 
 **Your DAX Code**:
 ```dax
-Total_Revenue = 
+Max_Transaction_Value = 
 
 
 ```
 
-**Expected Result**: A measure showing the sum of all sales (~$491,000).
+**Expected Result**: The largest Total Spend value in the dataset (~$9,838).
 
 ---
 
-### Task 5.2: Average Transaction Value
-Create a measure that calculates the average transaction value.
+### Task 5.2: Minimum Single Transaction
+Create a measure that finds the lowest transaction value.
 
-**Measure Name**: `Avg_Transaction_Value`
+**Measure Name**: `Min_Transaction_Value`
 
 **Your DAX Code**:
 ```dax
-Avg_Transaction_Value = 
+Min_Transaction_Value = 
 
 
 ```
 
-**Expected Result**: Average spend per transaction.
+**Expected Result**: The smallest Total Spend value in the dataset (~$162).
 
 ---
 
-### Task 5.3: Total Items Sold
-Create a measure that sums all items sold across all transactions.
+### Task 5.3: Average Items per Transaction
+Create a measure that calculates the average number of items sold per transaction.
 
-**Measure Name**: `Total_Items_Sold`
+**Measure Name**: `Avg_Items_Per_Sale`
 
 **Your DAX Code**:
 ```dax
-Total_Items_Sold = 
+Avg_Items_Per_Sale = 
 
 
 ```
 
-**Expected Result**: Total count of items sold.
+**Expected Result**: Average quantity of items (~13 items per transaction).
 
 ---
 
-### Task 5.4: Number of Transactions
-Create a measure that counts the number of unique transactions.
+### Task 5.4: Count of Unique Customers
+Create a measure that counts how many distinct customers made purchases.
 
-**Measure Name**: `Transaction_Count`
+**Measure Name**: `Unique_Customer_Count`
 
 **Your DAX Code**:
 ```dax
-Transaction_Count = 
+Unique_Customer_Count = 
 
 
 ```
 
-**Expected Result**: Count of sales (100).
+**Expected Result**: Number of different customers in the dataset (10).
 
 ---
 
-### Task 5.5: Total Weight Shipped (Measure)
-Create a measure that calculates the total weight shipped across all sales.
+### Task 5.5: Revenue per Customer (Average)
+Create a measure that calculates the average revenue per customer.
 
-**Measure Name**: `Total_Weight_Shipped`
+**Measure Name**: `Revenue_Per_Customer`
 
 **Your DAX Code**:
 ```dax
-Total_Weight_Shipped = 
+Revenue_Per_Customer = 
 
 
 ```
 
-**Expected Result**: Total weight in grams.
+**Expected Result**: Total revenue divided by unique customer count (~$49,109).
 
 ---
 
-## Bonus Challenge: Advanced Measures
+## Bonus Challenge: Advanced Filtering & Context
 
-### Task 6.1: High Value Sales Count
-Create a measure that counts sales with Total Spend greater than $5,000.
+### Task 6.1: Count of Large Transactions
+Create a measure that counts only transactions where more than 15 items were sold.
 
-**Measure Name**: `High_Value_Sales_Count`
-
-**Your DAX Code**:
-```dax
-High_Value_Sales_Count = 
-
-
-```
-
----
-
-### Task 6.2: Revenue from Product A
-Create a measure that calculates total revenue only from Product A.
-
-**Measure Name**: `Product_A_Revenue`
+**Measure Name**: `Large_Order_Count`
 
 **Your DAX Code**:
 ```dax
-Product_A_Revenue = 
+Large_Order_Count = 
 
 
 ```
 
 ---
 
-### Task 6.3: Average Items per Sale by City
-Create a measure that shows the average number of items per transaction, which can be broken down by City in a visual.
+### Task 6.2: Revenue from City 1 Only
+Create a measure that calculates total revenue specifically from City 1, regardless of any filters applied.
 
-**Measure Name**: `Avg_Items_Per_City`
+**Measure Name**: `City_1_Revenue`
 
 **Your DAX Code**:
 ```dax
-Avg_Items_Per_City = 
+City_1_Revenue = 
 
 
 ```
+
+---
+
+### Task 6.3: Percentage of Total Revenue
+Create a measure that shows what percentage of total revenue is represented by the current filter context.
+
+**Measure Name**: `Revenue_Percentage`
+
+**Your DAX Code**:
+```dax
+Revenue_Percentage = 
+
+
+```
+
+**Hint**: Compare the revenue in the current context to revenue with all filters removed.
 
 ---
 
@@ -311,10 +319,11 @@ Avg_Items_Per_City =
 
 After completing the exercises:
 
-1. Create a simple table visual showing your calculated columns
-2. Create a card visual for each measure to verify the results
-3. Test your measures with slicers (City, Product, Month) to see how they respond to filters
-4. Use DAX Studio to run test queries (optional)
+1. Create a table visual showing your calculated columns
+2. Create card visuals for each measure to verify the results
+3. Test your measures with slicers (City, Product, Customer) to see how they respond to filters
+4. Create a matrix visual with Products in rows and your measures in values
+5. Use DAX Studio to run test queries (optional)
 
 ---
 
@@ -323,12 +332,13 @@ After completing the exercises:
 By completing this worksheet, you should now understand:
 
 - ✓ How to create calculated columns vs. measures
-- ✓ Basic arithmetic operations in DAX
-- ✓ Date and time functions (FORMAT, YEAR, MONTH, etc.)
-- ✓ Conditional logic (IF, SWITCH)
-- ✓ The RELATED function for related tables
-- ✓ Basic aggregation functions (SUM, AVERAGE, COUNT)
-- ✓ Filter context and CALCULATE function
+- ✓ Basic arithmetic and text operations in DAX
+- ✓ Date and time extraction functions (QUARTER, HOUR, FORMAT)
+- ✓ Conditional logic with IF and SWITCH
+- ✓ The RELATED function for joining data from related tables
+- ✓ Aggregation functions (SUM, MAX, MIN, AVERAGE, DISTINCTCOUNT)
+- ✓ Filter context and the CALCULATE function
+- ✓ Percentage calculations with ALL function
 
 ---
 
@@ -336,4 +346,4 @@ By completing this worksheet, you should now understand:
 - Review the solutions file to check your answers
 - Refer to the DAX Cheat Sheet for quick syntax reference
 - Practice creating additional calculated columns and measures
-- Explore more advanced DAX functions like FILTER, ALL, and time intelligence
+- Explore more advanced DAX functions like FILTER, RANKX, and time intelligence

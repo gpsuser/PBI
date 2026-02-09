@@ -92,4 +92,37 @@ ORDER BY [Total Weight] DESC
 
 ```
 
+### Creating and using measures in DAX
+
+Example 1: Create a measure to calculate total weight
+
+```dax
+Total Weight = 
+SUMX(
+    'sales_data',
+    RELATED('weight'[Weight_grams])
+)
+
+```
+Example 2: Use the measure in a visual
+1. Create a table visual in Power BI
+2. Add `City` from `sales_data` to the rows
+3. Add the `Total Weight` measure to the values
+4. Sort the table by `Total Weight` in descending order
+
+Example 3: Create a measure to calculate average weight per item
+
+```dax
+Average Weight per Item =
+DIVIDE(
+    [Total Weight],
+    SUM('sales_data'[Items])
+)
+```
+
+Example 4: Use the average weight measure in a visual
+1. Create a table visual in Power BI
+2. Add `City` from `sales_data` to the rows
+3. Add the `Average Weight per Item` measure to the values
+4. Sort the table by `Average Weight per Item` in descending order
 

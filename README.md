@@ -71,7 +71,7 @@ Copy and paste the below into `Enter Data` and then click `Load`
 
 ```csv   ProductWeight
 
-Product	Weight grams
+Product	Weight_grams
 Product A	115
 Product B	220
 Product C	3000
@@ -81,7 +81,6 @@ Product E	525
 
 ```
 
-Fix the column header issue:
 
 
 

@@ -133,11 +133,14 @@ Example 4: Use the average weight measure in a visual
 ### Prompt for AI 
 
 ```text
-I have two data sets - that I would to join on the "Product" column and then I would like to calculate the total "Weight" over all products by "city". Please generate the DAX code to do this for the following two tables  . The first table is attached to this chat session and here is the second table: """  
+I have two data sets - that I would to join on the "Product" column and then I would like to calculate the total "Weight" over all products by "city". Please generate the DAX code to do this for the following two tables  . The first table (sales_data) is attached to this chat session and here is the second table (weight): """  
 Product	Weight_grams
 Product A	115
 Product B	220
 Product C	3000
 Product D	410
 Product E	525  """
+
+
+
 ```
